@@ -1,0 +1,91 @@
+Objective: Build a WebSocket-based microservice using the AWS SDK v3, ExpressJS with TypeScript, TypeORM for schema management, and a logging system using Pino. The service should communicate using WebSocket messages, not API endpoints, following best practices. The system should also integrate AWS SES and SQS for messaging, and create independent tables in the database for the required features (separate from the existing SAAS-related tables).
+
+Key Requirements:
+
+WebSocket Microservice:
+
+Use the ws WebSocket library (https://github.com/websockets/ws ) to create a WebSocket server.
+
+The server should handle incoming WebSocket connections and send/receive messages (no API endpoints, strictly WebSocket communication).
+
+Make sure the WebSocket server is implemented using ExpressJS to run in the same Node.js application.
+
+AWS Integration (SES and SQS):
+
+AWS SDK v3 should be used to integrate Simple Email Service (SES) for email functionality (sending emails as per the business logic). - integration ?
+
+AWS Simple Queue Service (SQS) should be integrated to enable asynchronous messaging and task queuing.
+
+Ensure that the WebSocket server sends and receives messages through SQS where appropriate.
+
+Database Integration with TypeORM:
+
+Use TypeORM to define and manage database schemas.
+
+Create new tables in the database for WebSocket-specific features (e.g., WebSocket connection logs, message history, etc.).
+
+Ensure that these new tables are independent of existing SAAS tables, meaning they are used only for this microservice and don't interfere with other parts of the application.
+
+Use TypeORM migrations to handle the creation of these tables.
+
+Logging Middleware:
+
+Implement a logging middleware using the Pino npm package (https://github.com/pinojs/pino ).
+
+The logging middleware should:
+
+Log all incoming WebSocket connections and messages.
+
+Log interactions with AWS services (SES, SQS).
+
+Provide useful log details such as timestamps, request types, and user IDs (if applicable).
+
+The logs should be structured in a way that makes it easy to track and debug WebSocket events and AWS interactions.
+
+WebSocket Communication & Message Handling:
+
+Define the message structure and types for WebSocket communication. Ensure that messages are sent and received via WebSocket messages and not through API endpoints.
+
+Use an appropriate message format (JSON) for communicating over WebSocket.
+
+Ensure that all logic and interactions between clients, AWS SES, and SQS are managed through WebSocket messages.
+
+Steps to Follow:
+---------------
+Set up WebSocket Server:
+
+Install necessary dependencies (ws, express, typescript, etc.).
+
+Create an ExpressJS application and integrate it with the ws WebSocket library.
+
+Handle WebSocket connections and define event handlers for incoming and outgoing messages.
+
+Integrate AWS Services (SES and SQS):
+
+Set up AWS SES for email functionality and implement functions to send emails.
+
+Set up AWS SQS for task queuing and implement functions to send and receive messages from SQS.
+
+Database Schema with TypeORM:
+
+Define the new database tables for WebSocket-related functionality (e.g., WebSocket connection logs, message history, etc.).
+
+Implement TypeORM entities for these tables.
+
+Create TypeORM migrations to handle database schema changes.
+
+Add Logging Middleware:
+
+Install and configure Pino for structured logging.
+
+Implement a middleware that logs all incoming WebSocket connections and messages.
+
+Add logging for interactions with AWS SES and SQS.
+
+Test and Verify:
+
+Test the WebSocket communication with a sample client (you can use a WebSocket client like Postman or a browser-based client).
+
+Ensure that the system logs correctly and that AWS SES and SQS integrations work as expected.
+
+Ensure that the database tables are created correctly and contain the expected data.

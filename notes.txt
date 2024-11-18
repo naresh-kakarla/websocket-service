@@ -1,0 +1,10 @@
+The service should communicate using WebSocket messages, not API endpoints, following best practices. The system should also integrate AWS SES and SQS for messaging, and create independent tables in the database for the required features (separate from the existing SAAS-related tables).
+
+
+---------------------
+
+1. Should create a websocket connection
+2. should accept the messages
+3. should integrate with AWS SQS(Simple Queue Service) - |message1, message2| - What is RabbitmQ, AWS SQS and Kafka
+4. Should integrate with AWS SES(Simple email Service) - Notification (email) - > you are sending an email with the following message.
+5. Should integrate with Database - goiung to save in the database. 
